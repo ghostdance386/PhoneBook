@@ -7,44 +7,53 @@ import java.io.IOException;
 import java.util.*;
 
 public class App {
+    static boolean brokeFromBubbleSort = false;
+    static Map<String, String> phoneBook = new TreeMap<>();
+    static List<String> namesToFind = new ArrayList<>();
+    static long startTimeLinear;
+    static long endTimeLinear;
+    static long startTimeSorting;
+    static long midTimeSorting;
+    static long endTimeSorting;
+    static long startTimeSearching;
+    static long endTimeSearching;
+
     public static void main(String[] args) {
 
-        File directory = new File("src/directorytest.txt");
+        File directory = new File("src/directory.txt");
         File find = new File("src/find.txt");
-        File phoneBookOutput = new File("src/phonebookoutput_small.txt");
+//        File phoneBookOutput = new File("src/phonebookoutput_small.txt");           // do zapisywania posortowanych danych do pliku
 
-        Map<String, String> phoneBook = new TreeMap<>();
-        List<String> namesToFind = new ArrayList<>();
-
-        long startTimeLinear;
-        long startTimeBubble;
-        long startTimeJump;
-        long endTimeLinear;
-        long endTimeBubble;
-        long endTimeJump;
-
+        startTimeLinear = System.currentTimeMillis();
         putDataToPhoneBookMap(directory, phoneBook);
         putDataToFindList(find, namesToFind);
-
         System.out.println("Start linear search");
-        startTimeLinear = System.currentTimeMillis();
         linearSearch(phoneBook, namesToFind);
         endTimeLinear = System.currentTimeMillis();
-        System.out.println("Linear search: "+timeTaken(startTimeLinear, endTimeLinear));
+        System.out.println(timeTaken(startTimeLinear, endTimeLinear));
 
         System.out.println("Start bubble sort + jump search");
-        startTimeBubble = System.currentTimeMillis();
+        startTimeSorting = System.currentTimeMillis();
         Map<String, String> phoneBookBubbleSorted = bubbleSortThePhoneBook(phoneBook);
-        endTimeBubble = System.currentTimeMillis();
-        writeSortedMapToFile(phoneBookBubbleSorted, phoneBookOutput);
+        endTimeSorting = System.currentTimeMillis();
+        if (!brokeFromBubbleSort) {
+            startTimeSearching = System.currentTimeMillis();
+            jumpSearch(phoneBookBubbleSorted, namesToFind);
+            endTimeSearching = System.currentTimeMillis();
+        } else {
+            startTimeSearching = System.currentTimeMillis();
+            linearSearch(phoneBookBubbleSorted, namesToFind);
+            endTimeSearching = System.currentTimeMillis();
+        }
+        System.out.println(timeTaken(startTimeSorting, endTimeSearching));
+        System.out.print("Sorting time: " + timeTaken(startTimeSorting, endTimeSorting));
+        if (brokeFromBubbleSort) {
+            System.out.println("- STOPPED, moved to linear search");
+        }
+        System.out.println("Searching time: " + timeTaken(startTimeSearching, endTimeSearching));
 
-        startTimeJump = System.currentTimeMillis();
-        jumpSearch(phoneBookBubbleSorted, namesToFind);
-        endTimeJump = System.currentTimeMillis();
-        System.out.println("Bubble sort + jump search: "+timeTaken(startTimeBubble, endTimeJump));
-        System.out.println("Bubble sorting: "+timeTaken(startTimeBubble, endTimeBubble));
-        System.out.println("Jump search: "+timeTaken(startTimeJump, endTimeJump));
 
+//        writeSortedMapToFile(phoneBookBubbleSorted, phoneBookOutput); // do zapisywania posortowanych danych do pliku
 
     }
 
@@ -83,10 +92,14 @@ public class App {
 
     private static Map<String, String> bubbleSortThePhoneBook(Map<String, String> phoneBook) {
         String[] phoneBookSorted = createArrayFromMap(phoneBook);
-
         String temp;
 
         for (int i = 0; i < phoneBookSorted.length; i++) {
+            midTimeSorting = System.currentTimeMillis();
+            if (midTimeSorting - startTimeSorting > 10 * (endTimeLinear - startTimeLinear)) {
+                brokeFromBubbleSort = true;
+                break;
+            }
             for (int j = i + 1; j < phoneBookSorted.length; j++) {
                 if (phoneBookSorted[i].compareTo(phoneBookSorted[j]) < 0) {
                     temp = phoneBookSorted[i];
@@ -101,6 +114,7 @@ public class App {
             String[] splittedEntry = name.split("=");
             phoneBookBubbleSorted.put(splittedEntry[0], splittedEntry[1]);
         }
+
 
         return phoneBookBubbleSorted;
     }
