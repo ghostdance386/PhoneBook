@@ -1,6 +1,7 @@
 package programator;
 
 
+import java.util.Hashtable;
 import java.util.List;
 
 public class Search {
@@ -103,5 +104,21 @@ public class Search {
         }
         endTime = System.currentTimeMillis();
         System.out.println("Found: " + foundCount + "/" + searchesCount);
+    }
+    public void hashTableSearch(Hashtable<String, String> phoneBook){
+        startTime = System.currentTimeMillis();
+        NamesToFindList namesToFindList = new NamesToFindList();
+        List<String> namesToFind = namesToFindList.create();
+        int foundCount = 0;
+        int searchesCount = namesToFind.size();
+
+        for (String name: namesToFind){
+            if(phoneBook.containsKey(name)){
+                foundCount++;
+            }
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("Found: " + foundCount + "/" + searchesCount);
+
     }
 }

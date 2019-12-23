@@ -11,6 +11,8 @@ public class Main {
         BubbleSortAndJumpSearch.perform(LinearSearch.getLinearSearchTime());
         System.out.println();
         QuickSortAndBinarySearch.perform();
+        System.out.println();
+        HashTable.perform();
 
 
     }
