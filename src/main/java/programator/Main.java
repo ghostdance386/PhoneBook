@@ -1,15 +1,19 @@
 package programator;
 
+import programator.methods.HashTable;
+import programator.methods.Linear;
+import programator.methods.QuickSortAndBinary;
+
 public class Main {
 
     public static void main(String[] args) {
-        LinearSearch linearSearch = new LinearSearch();
-        QuickSortAndBinarySearch quickSortAndBinarySearch = new QuickSortAndBinarySearch();
+        Linear linear = new Linear();
+        QuickSortAndBinary quickSortAndBinary = new QuickSortAndBinary();
         HashTable hashTable = new HashTable();
 
-        linearSearch.perform();
+        linear.perform();
         System.out.println();
-        quickSortAndBinarySearch.perform();
+        quickSortAndBinary.perform();
         System.out.println();
         hashTable.perform();
     }
