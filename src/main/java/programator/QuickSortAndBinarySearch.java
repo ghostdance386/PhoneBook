@@ -5,6 +5,7 @@ public class QuickSortAndBinarySearch {
     private final QuickSort quickSort = new QuickSort();
     private final PhoneBook phoneBook = new PhoneBook();
     private final Search search = new Search();
+    private final NamesToFindList namesToFindList = new NamesToFindList();
 
     public void perform() {
         long startTime = System.currentTimeMillis();
@@ -12,7 +13,7 @@ public class QuickSortAndBinarySearch {
 
         quickSort.quickSort(phoneBook.create(), 0, phoneBook.getPhoneBook().size() - 1);
         quickSort.setEndTime(System.currentTimeMillis());
-        search.binarySearch(quickSort.getPhoneBook());
+        search.binarySearch(quickSort.getPhoneBook(), namesToFindList.create());
 
         long endTime = System.currentTimeMillis();
         System.out.println("Time taken: " + Timer.timeTaken(startTime, endTime));
