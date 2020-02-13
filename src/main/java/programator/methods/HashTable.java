@@ -1,5 +1,6 @@
 package programator.methods;
 
+import org.springframework.stereotype.Component;
 import programator.lists.AllContacts;
 import programator.lists.ContactsToFind;
 import programator.model.Person;
@@ -8,6 +9,7 @@ import programator.time.Timer;
 
 import java.util.Hashtable;
 
+@Component
 public class HashTable {
 
     private final Search search = new Search();
@@ -15,16 +17,14 @@ public class HashTable {
     private final ContactsToFind contactsToFind = new ContactsToFind();
     private final AllContacts allContacts = new AllContacts();
 
-    public void perform() {
+    public String perform() {
         long startTime = System.currentTimeMillis();
-        System.out.println("Start searching (hash table)");
 
         fillHashtable();
         search.hashTableSearch(hashtable, contactsToFind.createListContactsToFind());
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Time taken: " + Timer.timeTaken(startTime, search.getEndTime()));
-        System.out.println("Creating time: " + Timer.timeTaken(startTime, endTime));
+        return "Time taken: " + Timer.timeTaken(startTime, search.getEndTime()) + " Creating time: " + Timer.timeTaken(startTime, endTime);
     }
 
     private void fillHashtable() {

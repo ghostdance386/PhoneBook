@@ -1,11 +1,13 @@
 package programator.methods;
 
+import org.springframework.stereotype.Component;
 import programator.lists.AllContacts;
 import programator.lists.ContactsToFind;
 import programator.search.Search;
 import programator.sort.QuickSort;
 import programator.time.Timer;
 
+@Component
 public class QuickSortAndBinary {
 
     private final QuickSort quickSort = new QuickSort();
@@ -13,16 +15,14 @@ public class QuickSortAndBinary {
     private final Search search = new Search();
     private final ContactsToFind contactsToFind = new ContactsToFind();
 
-    public void perform() {
+    public String perform() {
         long startTime = System.currentTimeMillis();
-        System.out.println("Start quick sort + binary search");
 
         quickSort.quickSort(allContacts.createListAllContacts(), 0, allContacts.getListAllContacts().size() - 1);
         quickSort.setEndTime(System.currentTimeMillis());
         search.binarySearch(quickSort.getPhoneBook(), contactsToFind.createListContactsToFind());
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Time taken: " + Timer.timeTaken(startTime, endTime));
-        System.out.println("Sorting time: " + Timer.timeTaken(startTime, quickSort.getEndTime()));
+        return "Time taken: " + Timer.timeTaken(startTime, endTime) + " Sorting time: " + Timer.timeTaken(startTime, quickSort.getEndTime());
     }
 }

@@ -19,8 +19,6 @@ public class Search {
         startTime = System.currentTimeMillis();
 
         int foundCount = 0;
-        int searchesCount = namesToFind.size();
-
         for (String s : namesToFind) {
             for (Person person : phoneBook) {
                 if (person.getName().equals(s)) {
@@ -30,7 +28,6 @@ public class Search {
         }
 
         endTime = System.currentTimeMillis();
-        System.out.println("Found: " + foundCount + "/" + searchesCount);
         return foundCount;
     }
 
@@ -38,8 +35,6 @@ public class Search {
         startTime = System.currentTimeMillis();
 
         int foundCount = 0;
-        int searchesCount = namesToFind.size();
-
         for (String name : namesToFind) {
             int left = 0;
             int right = phoneBook.size() - 1;
@@ -57,7 +52,6 @@ public class Search {
         }
 
         endTime = System.currentTimeMillis();
-        System.out.println("Found: " + foundCount + "/" + searchesCount);
         return foundCount;
     }
 
@@ -65,8 +59,6 @@ public class Search {
         startTime = System.currentTimeMillis();
 
         int foundCount = 0;
-        int searchesCount = namesToFind.size();
-
         for (String name : namesToFind) {
             if (phoneBook.containsKey(name)) {
                 foundCount++;
@@ -74,7 +66,6 @@ public class Search {
         }
 
         endTime = System.currentTimeMillis();
-        System.out.println("Found: " + foundCount + "/" + searchesCount);
         return foundCount;
     }
 }
