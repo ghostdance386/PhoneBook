@@ -9,9 +9,9 @@ import java.util.Scanner;
 public class NamesToFindList {
 
     private List<String> namesToFind = new ArrayList<>();
-    private File find = new File("src/find.txt");
+    private File find = new File(this.getClass().getClassLoader().getResource("find.txt").getFile());
 
-    public List<String> create(){
+    public List<String> create() {
         try (Scanner scanner = new Scanner(find)) {
             while (scanner.hasNextLine()) {
                 namesToFind.add(scanner.nextLine());
@@ -21,9 +21,4 @@ public class NamesToFindList {
         }
         return namesToFind;
     }
-
-    public List<String> getNamesToFind() {
-        return namesToFind;
-    }
-
 }

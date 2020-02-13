@@ -1,33 +1,18 @@
 package programator;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
 public class QuickSort {
 
     private long startTime;
     private long endTime;
     private List<Person> phoneBook = new ArrayList<>();
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(long endTime) {
-        this.endTime = endTime;
-    }
-
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public long getEndTime() {
-        return endTime;
-    }
-
-    public List<Person> getPhoneBook() {
-        return phoneBook;
-    }
 
     public void quickSort(List<Person> phoneBook, int left, int right) {
         if (left < right) {
@@ -55,10 +40,9 @@ public class QuickSort {
 
     private void swap(List<Person> phoneBook, int i, int j) {
         Person temp = phoneBook.get(i);
-        phoneBook.set(i,phoneBook.get(j));
-        phoneBook.set(j,temp);
+        phoneBook.set(i, phoneBook.get(j));
+        phoneBook.set(j, temp);
     }
-
 }
 
 

@@ -2,22 +2,15 @@ package programator;
 
 public class Main {
 
-    public static boolean brokeFromBubbleSort;
-
     public static void main(String[] args) {
+        LinearSearch linearSearch = new LinearSearch();
+        QuickSortAndBinarySearch quickSortAndBinarySearch = new QuickSortAndBinarySearch();
+        HashTable hashTable = new HashTable();
 
-        LinearSearch.perform();
+        linearSearch.perform();
         System.out.println();
-        BubbleSortAndJumpSearch.perform(LinearSearch.getLinearSearchTime());
+        quickSortAndBinarySearch.perform();
         System.out.println();
-        QuickSortAndBinarySearch.perform();
-        System.out.println();
-        HashTable.perform();
-
-
+        hashTable.perform();
     }
-
-
-
-
 }
