@@ -1,7 +1,8 @@
-package programator;
+package programator.sort;
 
 import lombok.Getter;
 import lombok.Setter;
+import programator.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,3 @@ public class QuickSort {
         phoneBook.set(j, temp);
     }
 }
-
-
-

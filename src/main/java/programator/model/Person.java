@@ -1,4 +1,4 @@
-package programator;
+package programator.model;
 
 import lombok.Data;
 

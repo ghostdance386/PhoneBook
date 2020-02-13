@@ -1,4 +1,4 @@
-package programator;
+package programator.time;
 
 public class Timer {
 
@@ -6,6 +6,6 @@ public class Timer {
         long minute = (endTime - startTime) / 1000 / 60;
         long seconds = (endTime - startTime) / 1000 - (minute * 60);
         long millis = (endTime - startTime) - (seconds * 1000) - (minute * 1000 * 60);
-        return  minute + "min. " + seconds + "sec. " + millis + "ms.";
+        return minute + "min. " + seconds + "sec. " + millis + "ms.";
     }
 }

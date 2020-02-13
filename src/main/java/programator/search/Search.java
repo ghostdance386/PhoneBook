@@ -1,7 +1,9 @@
-package programator;
+package programator.search;
 
 
 import lombok.Getter;
+import programator.lists.ContactsToFind;
+import programator.model.Person;
 
 import java.util.Hashtable;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.List;
 @Getter
 public class Search {
 
-    private final NamesToFindList namesToFindList = new NamesToFindList();
+    private final ContactsToFind contactsToFind = new ContactsToFind();
     private long startTime;
     private long endTime;
 

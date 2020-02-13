@@ -3,8 +3,7 @@ package programator.search;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import programator.Person;
-import programator.Search;
+import programator.model.Person;
 
 import java.util.Hashtable;
 import java.util.List;
