@@ -10,11 +10,10 @@ import java.util.List;
 public class Search {
 
     private final NamesToFindList namesToFindList = new NamesToFindList();
-    private final List<String> namesToFind = namesToFindList.create();
     private long startTime;
     private long endTime;
 
-    public int linearSearch(List<Person> phoneBook) {
+    public int linearSearch(List<Person> phoneBook, List<String> namesToFind) {
         startTime = System.currentTimeMillis();
 
         int foundCount = 0;
@@ -33,7 +32,7 @@ public class Search {
         return foundCount;
     }
 
-    public int binarySearch(List<Person> phoneBook) {
+    public int binarySearch(List<Person> phoneBook, List<String> namesToFind) {
         startTime = System.currentTimeMillis();
 
         int foundCount = 0;
@@ -60,7 +59,7 @@ public class Search {
         return foundCount;
     }
 
-    public int hashTableSearch(Hashtable<String, String> phoneBook) {
+    public int hashTableSearch(Hashtable<String, String> phoneBook, List<String> namesToFind) {
         startTime = System.currentTimeMillis();
 
         int foundCount = 0;
