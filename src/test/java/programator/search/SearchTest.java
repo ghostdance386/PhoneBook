@@ -35,7 +35,19 @@ public class SearchTest {
     }
 
     @Test
-    public void linear_findOneName_inTwoNamesHashtable() {
+    public void linear_findOneName_inOneNameList() {
+        Person person = new Person();
+        person.setName("Jan");
+        List<Person> linear = Lists.newArrayList(person);
+
+        List<String> names = Lists.newArrayList("Jan", "John");
+
+        int actual = search.linearSearch(linear, names);
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void linear_findOneName_inTwoNamesList() {
         Person person = new Person();
         Person person1 = new Person();
         person.setName("Jan");
@@ -46,6 +58,20 @@ public class SearchTest {
 
         int actual = search.linearSearch(linear, name);
         assertEquals(1, actual);
+    }
+
+    @Test
+    public void linear_emptyList_inTwoNamesList() {
+        Person person = new Person();
+        Person person1 = new Person();
+        person.setName("Jan");
+        person1.setName("John");
+        List<Person> linear = Lists.newArrayList(person, person1);
+
+        List<String> name = Lists.newArrayList();
+
+        int actual = search.linearSearch(linear, name);
+        assertEquals(0, actual);
     }
 
     @Test
@@ -77,7 +103,19 @@ public class SearchTest {
     }
 
     @Test
-    public void binary_findOneName_inTwoNamesHashtable() {
+    public void binary_findOneName_inOneNameList() {
+        Person person = new Person();
+        person.setName("Jan");
+        List<Person> binary = Lists.newArrayList(person);
+
+        List<String> names = Lists.newArrayList("Jan", "John");
+
+        int actual = search.binarySearch(binary, names);
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void binary_findOneName_inTwoNamesList() {
         Person person = new Person();
         Person person1 = new Person();
         person.setName("Jan");
@@ -88,6 +126,20 @@ public class SearchTest {
 
         int actual = search.binarySearch(binary, name);
         assertEquals(1, actual);
+    }
+
+    @Test
+    public void binary_emptyList_inTwoNamesList() {
+        Person person = new Person();
+        Person person1 = new Person();
+        person.setName("Jan");
+        person1.setName("John");
+        List<Person> binary = Lists.newArrayList(person, person1);
+
+        List<String> name = Lists.newArrayList();
+
+        int actual = search.binarySearch(binary, name);
+        assertEquals(0, actual);
     }
 
     @Test
@@ -117,6 +169,17 @@ public class SearchTest {
     }
 
     @Test
+    public void hashtable_findOneName_inOneNameList() {
+        Hashtable<String, String> hashtable = new Hashtable<>();
+        hashtable.put("Jan", "Kowalski");
+        List<String> names = Lists.newArrayList("Jan", "John");
+
+        int actual = search.hashTableSearch(hashtable, names);
+
+        assertEquals(1, actual);
+    }
+
+    @Test
     public void hashtable_findOneName_inTwoNamesHashtable() {
         Hashtable<String, String> hashtable = new Hashtable<>();
         hashtable.put("Jan", "Kowalski");
@@ -125,6 +188,17 @@ public class SearchTest {
 
         int actual = search.hashTableSearch(hashtable, names);
         assertEquals(1, actual);
+    }
+
+    @Test
+    public void hashtable_emptyList_inTwoNamesHashtable() {
+        Hashtable<String, String> hashtable = new Hashtable<>();
+        hashtable.put("Jan", "Kowalski");
+        hashtable.put("John", "Nowak");
+        List<String> names = Lists.newArrayList();
+
+        int actual = search.hashTableSearch(hashtable, names);
+        assertEquals(0, actual);
     }
 
     @Test
