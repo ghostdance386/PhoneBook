@@ -4,12 +4,10 @@
 <head>
     <meta name="viewport" content="width=device-width"/>
     <meta charset="utf-8">
-    <script type="text/javascript"
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-    </script>
-    <script type="text/javascript">
+    <title>Phone Book</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
         $(document).ready(function () {
-
             $('#hashtable').click(function () {
                 $.ajax('/hashtable',
                     {
@@ -39,14 +37,13 @@
         });
     </script>
 </head>
-<body style="background-color: #ff671a">
+<body style="background-image: url(https://res.cloudinary.com/dvxbeoob5/image/upload/v1581705208/t%C5%82ophonebook_mg4n78.png)">
 <div align="center">
-    <h1> Welcome</h1>
-    <h2>You can choose one of three search methods.</h2>
+    <h1>Welcome, this is PhoneBook!</h1>
     <h2>The result is the time that the method needs to find 500 contacts from the phone book, which contains one
         million.</h2>
+    <h2>You can choose one of three search methods.</h2>
     <h2>Press button and wait for the method to finish.</h2>
-    <h3>The application is already running</h3>
     <input type="button" id="hashtable" value="HASHTABLE"
            STYLE="font: 16pt Arial; font-style: italic; font-weight: bolder; color:black; background:papayawhip; width: 160px; height: 40px"/>
     <input type="button" id="binary" value="BINARY"
