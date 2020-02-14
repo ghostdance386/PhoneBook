@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#hashtable').click(function () {
+                $.ajax('/hashtable',
+                    {
+                        success: function (data) {
+                            $('p').append("<br>" + data);
+                        }
+                    });
+            });
+
+            $('#binary').click(function () {
+                $.ajax('/binary',
+                    {
+                        success: function (data) {
+                            $('p').append("<br>" + data);
+                        }
+                    });
+            });
+
+            $('#linear').click(function () {
+                $.ajax('/linear',
+                    {
+                        success: function (data) {
+                            $('p').append("<br>" + data);
+                        }
+                    });
+            });
+        });
+    </script>
+</head>
+<body style="background-color: #ff671a">
+<div align="center">
+    <h1> Welcome</h1>
+    <h2>You can choose one of three search methods.</h2>
+    <h2>The result is the time that the method needs to find 500 contacts from the phone book, which contains one
+        million.</h2>
+    <h2>Press button and wait for the method to finish.</h2>
+    <h3>The application is already running</h3>
+    <input type="button" id="hashtable" value="HASHTABLE"
+           STYLE="font: 16pt Arial; font-style: italic; font-weight: bolder; color:black; background:papayawhip; width: 160px; height: 40px"/>
+    <input type="button" id="binary" value="BINARY"
+           STYLE="font: 16pt Arial; font-style: italic; font-weight: bolder; color:black; background:papayawhip; width: 130px; height: 40px"/>
+    <input type="button" id="linear" value="LINEAR"
+           STYLE="font: 16pt Arial; font-style: italic; font-weight: bolder; color:black; background:papayawhip; width: 130px; height: 40px"/>
+    <p>
+    </p>
+</div>
+</body>
+</html>
